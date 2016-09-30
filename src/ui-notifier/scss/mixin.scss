@@ -1,0 +1,12 @@
+$colors: (
+  success: $success,
+  info: $info,
+  danger: $danger,
+  error: $error
+);
+
+@mixin flash-color($color) {
+  &.flash-#{$color} {
+    background-color: map-get($colors, $color);
+  }
+}

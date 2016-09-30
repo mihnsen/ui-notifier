@@ -1,0 +1,23 @@
+.bottom-flash{
+  position: fixed;
+  width: 60%;
+  bottom: 0;
+  left: 20%;
+  right: 0;
+  z-index: 200000;
+}
+
+.flash-instance {
+}
+.flash {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 1px;
+  font-size: 1.2rem;
+  color: #fff;
+
+  @include flash-color('success');
+  @include flash-color('info');
+  @include flash-color('danger');
+  @include flash-color('error');
+}

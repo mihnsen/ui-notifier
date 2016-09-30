@@ -1,0 +1,29 @@
+{
+  "generator-angularjs-library": {
+    "props": {
+      "author": {
+        "name": "mihnsen",
+        "email": "minhnt.hut@gmail.com"
+      },
+      "libraryName": {
+        "original": "ui-notifier",
+        "camelized": "uiNotifier",
+        "dasherized": "ui-notifier",
+        "slugified": "ui-notifier",
+        "parts": [
+          "ui",
+          "notifier"
+        ]
+      },
+      "includeModuleDirectives": true,
+      "includeModuleFilters": true,
+      "includeModuleServices": true,
+      "includeAngularModuleResource": false,
+      "includeAngularModuleCookies": false,
+      "includeAngularModuleSanitize": true,
+      "librarySrcDirectory": "src/ui-notifier",
+      "libraryUnitTestDirectory": "test/unit/ui-notifier",
+      "libraryUnitE2eDirectory": "test/e2e/ui-notifier"
+    }
+  }
+}
