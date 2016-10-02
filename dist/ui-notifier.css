@@ -4,17 +4,27 @@
   .notifier-close:hover {
     opacity: 0.8; }
 
-.bottom-flash {
+.flash-instance {
   position: fixed;
-  width: 60%;
-  bottom: 0;
-  left: 20%;
+  top: 0;
+  left: 0;
   right: 0;
-  z-index: 200000; }
+  z-index: 9999;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none; }
+  .flash-instance.flash-bottom {
+    top: auto;
+    bottom: 0; }
+  .flash-instance.flash-module {
+    position: absolute; }
 
 .flash {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  position: relative;
+  padding: 10px;
   margin-bottom: 1px;
   font-size: 1.2rem;
   color: #fff; }
@@ -22,7 +32,28 @@
     background-color: #5eb95e; }
   .flash.flash-info {
     background-color: #0e90d2; }
-  .flash.flash-danger {
+  .flash.flash-warning {
     background-color: #f37b1d; }
   .flash.flash-error {
     background-color: #dd514c; }
+
+.flash-close {
+  -webkit-appearance: none;
+  position: relative;
+  top: -2px;
+  float: right;
+  padding: 0;
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: .2; }
+  .flash-close:hover {
+    opacity: 0.7;
+    filter: alpha(opacity=70); }

@@ -1,49 +1,74 @@
 angular.module('uiNotifier.providers').provider('uiFlash', function() {
-  var instance = null;
+  let instance = null;
+  let option = {
+    position: 'top',
+    duration: 3000,
+    limit: 3,
+    single: false,
+    closeBtn: true,
+    module: false,
+    html: false
+  };
 
   function register(container) {
     instance = container;
   }
 
-  function show(type, message, duration) {
+  const getOptions = () => {
+    return option;
+  };
+
+  const setOptions = (settings) => {
+    option = angular.extend(option, settings);
+  };
+
+
+  function show(type, message, timeout) {
     if (!type) {
       type = 'info';
     }
 
     if (instance) {
-      instance.add(type, message, duration);
+      return instance.add(type, message, timeout);
     } else {
-      throw Error('You must add a notify-instance directive before show message');
+      throw Error('You must register a ui-flash-instance directive before show message');
     }
   }
 
   function closeAll() {
     if (instance) {
       instance.closeAll();
-    } else {
-      throw Error('You must add a sw-notify-instance directive before show message');
     }
   }
 
-  function success(message, duration) {
-    show('success', message, duration);
+  function success(message, timeout) {
+    return show('success', message, timeout);
   }
 
-  function error(message, duration) {
-    show('error', message, duration);
+  function info(message, timeout) {
+    return show('info', message, timeout);
   }
 
-  function info(message, duration) {
-    show('info', message, duration);
+  function warning(message, timeout) {
+    return show('warning', message, timeout);
   }
 
-  return {
-    register: register,
-    show: show,
-    error: error,
-    success: success,
-    info: info,
-    close: close,
-    closeAll: closeAll,
-  };
+  function error(message, timeout) {
+    return show('error', message, timeout);
+  }
+
+  this.$get = [() => {
+    return {
+      register,
+      getOptions,
+      setOptions,
+      show,
+      success,
+      info,
+      warning,
+      error,
+      close,
+      closeAll,
+    };
+  }];
 });

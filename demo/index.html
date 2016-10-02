@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="description" content="UI-Notifier lightweight module">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.css">
+
+  <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../dist/ui-notifier.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <title>UI-Notifier</title>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-85040392-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+
+<body ng-controller="UINotifierDemoCtrl as ctrl">
+  <header class="header">
+    <div class="container">
+      <h1>ui-notifier</h1>
+      <p>A simple, lightweight module for displaying notifications, flash, toast in your AngularJS app.</p>
+    </div>
+  </header>
+
+  <main role="main" class="main">
+    <section class="screen demo">
+      <div class="container">
+        <h2 class="title"> uiFlash</h2>
+        <div class="row">
+          <div class="col-md-6 col-xs-12">
+            <form class="form">
+              <div class="form-group">
+                <label class="control-label">Message</label>
+                <textarea ng-model="ctrl.msg" class="form-control" rows="3"></textarea>
+              </div>
+              <div class="row">
+                <div class="col-xs-3">
+                  <div class="form-group">
+                    <label class="control-label"> position </label>
+                    <select class="form-control" ng-model="ctrl.option.position" ng-options="value as value for (key, value) in ctrl.positions">
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-3">
+                  <div class="form-group">
+                    <label class="control-label"> timeout </label>
+                    <select class="form-control" ng-model="ctrl.option.duration" ng-options="duration.value as duration.label for duration in ctrl.durations">
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-3">
+                  <div class="form-group">
+                    <label class="control-label"> limit items </label>
+                    <select class="form-control" ng-model="ctrl.option.limit"  ng-options="duration.value as duration.label for duration in ctrl.limits">
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-3">
+                  <div class="form-group">
+                    <label class="control-label"> single </label>
+                    <select class="form-control" ng-model="ctrl.option.single" ng-options="value as value for (key, value) in ctrl.singles">
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-3">
+                  <div class="form-group">
+                    <label class="control-label"> close btn? </label>
+                    <select class="form-control" ng-model="ctrl.option.closeBtn" ng-options="value as value for (key, value) in ctrl.singles">
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-3">
+                  <div class="form-group">
+                    <label class="control-label"> module </label>
+                    <select class="form-control" ng-model="ctrl.option.module" ng-options="value as value for (key, value) in ctrl.singles">
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-3">
+                  <div class="form-group">
+                    <label class="control-label"> html </label>
+                    <select class="form-control" ng-model="ctrl.option.html" ng-options="value as value for (key, value) in ctrl.singles">
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <div class="box">
+              <button ng-click="ctrl.showSuccess()" class="btn btn-success" type="button">Success</button>
+              <button ng-click="ctrl.showInfo()" class="btn btn-info" type="button">Info</button>
+              <button ng-click="ctrl.showWarning()" class="btn btn-warning" type="button">Warning</button>
+              <button ng-click="ctrl.showError()" class="btn btn-danger" type="button">Error</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen extra">
+      <div class="divider"></div>
+      <h3 class="text-center">Follow & Share</h3>
+      <div class="text-center">
+        <!-- Place this tag where you want the button to render. -->
+        <a class="github-button" href="https://github.com/mihnsen" aria-label="Follow @mihnsen on GitHub">Follow @mihnsen</a>
+        <!-- Place this tag where you want the button to render. -->
+        <a class="github-button" href="https://github.com/mihnsen/ui-notifier" data-icon="octicon-star" data-count-href="/mihnsen/ui-notifier/stargazers" data-count-api="/repos/mihnsen/ui-notifier#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mihnsen/ui-notifier on GitHub">Star</a>
+      </div>
+
+      <div class="divider"> </div>
+      <h3 class="text-center">Issue tracker</h3>
+      <div class="text-center">
+        <!-- Place this tag where you want the button to render. -->
+        <a class="github-button" href="https://github.com/mihnsen/ui-notifier/issues" data-icon="octicon-issue-opened" data-style="mega" data-count-api="/repos/mihnsen/ui-notifier#open_issues_count" data-count-aria-label="# issues on GitHub" aria-label="Issue mihnsen/ui-notifier on GitHub">Issue</a>
+      </div>
+    </section>
+
+    <!-- Register instance -->
+    <div ui-flash-instance
+      position="ctrl.option.position",
+      duration="ctrl.option.duration",
+      limit="ctrl.option.limit",
+      single="ctrl.option.single",
+      close-btn="ctrl.option.closeBtn",
+      module="ctrl.option.module"
+      html="ctrl.option.html"
+      ></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="http://github.com/mihnsen/ui-notifier" target="_blank">Github</a></li>
+        <li><a href="http://ownego.com" target="_blank">About</a></li>
+      </ul>
+      <p>
+        Designed and built with love by <a href="http://www.github.com/mihnsen" target="_blank">@mihnsen</a>
+      </p>
+      <p>
+        Code licensed <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>
+      </p>
+    </div>
+  </footer>
+
+  <a href="https://github.com/mihnsen/ui-notifier">
+    <img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png">
+  </a>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script type="text/javascript" src="../dist/ui-notifier.js"></script>
+
+  <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
