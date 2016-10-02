@@ -11,18 +11,20 @@ You can check out the vitals and demo here: [http://mihnsen.github.io/ui-notifie
 
 #### First version
 With first version, we provide a Flash service to show flash message in your application with a ton of features:
-1. 4 type of message: success, info, warning, error
-2. Setitng message position (top, bottom)
-3. Setting message timeout (provide timeout for each message)
-4. Setting limit messages
-5. Show message on module
-6. Html message supported
+- 4 type of message: success, info, warning, error
+- Setitng message position (top, bottom)
+- Setting message timeout (provide timeout for each message)
+- Setting limit messages
+- Show message on module
+- Html message supported
 [![uiNotifier Demo](images/screenshot.png)](http://mihnsen.github.io/ui-notifier)
 
 #### Comming soon
 With next version we will provide:
-1. Notifications
-2. Toasts
+
+- Notifications
+- Toasts
+
 
 Implementation
 ==============

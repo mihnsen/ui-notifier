@@ -3,5 +3,5 @@ node_js: ["6.7.0"]
 before_script:
   - npm install -g bower
   - bower install
-  - gulp
+  - gulp build
 
