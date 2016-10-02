@@ -1,5 +1,5 @@
 angular.module('uiNotifier.directives')
-  .directive('uiFlashInstance', function (uiFlash, $timeout) {
+  .directive('uiFlashInstance', ['uiFlash', '$timeout', function (uiFlash, $timeout) {
     return {
       restrict: 'EA',
       template:
@@ -28,4 +28,4 @@ angular.module('uiNotifier.directives')
       controller: 'FlashInstanceController',
       controllerAs: 'ctrl',
     };
-  });
+  }]);

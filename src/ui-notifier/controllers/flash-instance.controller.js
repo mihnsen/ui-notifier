@@ -1,5 +1,5 @@
 angular.module('uiNotifier.directives')
-  .controller('FlashInstanceController', function(uiFlash, $timeout, $log) {
+  .controller('FlashInstanceController', ['uiFlash', '$timeout', '$log', function(uiFlash, $timeout, $log) {
     this.messages = [];
     this.option = uiFlash.getOptions();
 
@@ -96,4 +96,4 @@ angular.module('uiNotifier.directives')
 
     // Register instance
     uiFlash.register(this);
-  });
+  }]);

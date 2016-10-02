@@ -1,4 +1,4 @@
-angular.module('uiNotifier.providers').provider('uiFlash', function() {
+angular.module('uiNotifier.providers').provider('uiFlash', [function() {
   let instance = null;
   let option = {
     position: 'top',
@@ -71,4 +71,4 @@ angular.module('uiNotifier.providers').provider('uiFlash', function() {
       closeAll,
     };
   }];
-});
+}]);

@@ -1,4 +1,4 @@
-ui-notifier ([live demo](http://mihnsen.github.io/ui-notifier/#demo)) [![Build Status](https://travis-ci.org/mihnsen/ui-notifier.svg?branch=master)](https://travis-ci.org/mihnsen/ui-notifier) [![Code Climate](https://codeclimate.com/github/mihnsen/ui-notifier/badges/gpa.svg)](https://codeclimate.com/github/mihnsen/ui-notifier)
+ui-notifier ([live demo](http://mihnsen.github.io/ui-notifier/)) [![Build Status](https://travis-ci.org/mihnsen/ui-notifier.svg?branch=master)](https://travis-ci.org/mihnsen/ui-notifier) [![Code Climate](https://codeclimate.com/github/mihnsen/ui-notifier/badges/gpa.svg)](https://codeclimate.com/github/mihnsen/ui-notifier)
 =========
 
 A simple, lightweight module for displaying notifications, flash messages, toasts in your AngularJS app.
@@ -265,7 +265,7 @@ gulp
 To run through the configured unit tests, you can run `gulp test`.  This will fire off a series of tests that check that all default options are set correctly, all configurable options are able to be set correctly, and that all methods carry out the functionality that they're supposed to.  These tests should let you know if any of the updates that you've made have negatively effected any preexisting functionality.  Also, when the tests complete, there will be a test coverage report generated and stored in the `coverage` directory.
 
 ```console
-gulp test-src
+gulp test
 ```
 
 Next, you'll want to do all of your development within three locations.  If you add changes anywhere else, they're likely to be overwritten during the build process.  These locations are:

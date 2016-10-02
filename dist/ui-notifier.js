@@ -32,7 +32,7 @@
 })(angular);
 'use strict';
 
-angular.module('uiNotifier.directives').controller('FlashInstanceController', function (uiFlash, $timeout, $log) {
+angular.module('uiNotifier.directives').controller('FlashInstanceController', ['uiFlash', '$timeout', '$log', function (uiFlash, $timeout, $log) {
   var _this = this;
 
   this.messages = [];
@@ -129,10 +129,10 @@ angular.module('uiNotifier.directives').controller('FlashInstanceController', fu
 
   // Register instance
   uiFlash.register(this);
-});
+}]);
 'use strict';
 
-angular.module('uiNotifier.directives').directive('uiFlashInstance', function (uiFlash, $timeout) {
+angular.module('uiNotifier.directives').directive('uiFlashInstance', ['uiFlash', '$timeout', function (uiFlash, $timeout) {
   return {
     restrict: 'EA',
     template: '<div class="flash-instance flash-{{ ctrl.position }}" ng-class="{ \'flash-module\': ctrl.module }">\n          <div class="flash-track">\n            <div class="flash flash-{{ message.type }}" ng-repeat="message in ctrl.messages">\n              <button ng-hide="!ctrl.closeBtn" ng-click="ctrl.close(message.id)" class="flash-close">\n                <span> &times; </span>\n              </button>\n              <span class="msg" ng-if="!ctrl.htmlEnabled()">{{ message.msg }}</span>\n              <span class="msg" ng-if="ctrl.htmlEnabled()" ng-bind-html="message.msg"></span>\n            </div>\n          </div>\n        </div>',
@@ -150,10 +150,10 @@ angular.module('uiNotifier.directives').directive('uiFlashInstance', function (u
     controller: 'FlashInstanceController',
     controllerAs: 'ctrl'
   };
-});
+}]);
 'use strict';
 
-angular.module('uiNotifier.providers').provider('uiFlash', function () {
+angular.module('uiNotifier.providers').provider('uiFlash', [function () {
   var instance = null;
   var option = {
     position: 'top',
@@ -225,4 +225,4 @@ angular.module('uiNotifier.providers').provider('uiFlash', function () {
       closeAll: closeAll
     };
   }];
-});
+}]);

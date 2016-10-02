@@ -7,7 +7,20 @@
       "email": "minhnt.hut@gmail.com"
     }
   ],
-  "main": ["dist/ui-notifier.js"],
+  "description": "A simple, lightweight module for displaying flash messages, notifications, toasts in your AngularJS app.",
+  "main": [
+    "dist/ui-notifier.js",
+    "dist/ui-notifier.css"
+  ],
+  "keywords": [
+    "AngularJS",
+    "ui-notifier",
+    "notify",
+    "flash",
+    "notification",
+    "toast",
+    "angular-flash"
+  ],
   "ignore": [
     "src",
     "test",
@@ -15,6 +28,8 @@
     "karma-*.conf.js",
     "**/.*"
   ],
+  "license": "MIT",
+  "homepage": "http://mihnsen.github.com/ui-notifier",
   "dependencies": {},
   "devDependencies": {
     "angular-mocks": ">=1.2.0",

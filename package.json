@@ -5,11 +5,28 @@
     "name": "mihnsen",
     "email": "minhnt.hut@gmail.com"
   },
-  "dependencies": {},
+  "description": "A simple, lightweight module for displaying flash messages, notifications and toasts.",
+  "license": "MIT License",
+  "homepage": "https://mihnsen.github.io/ui-notifier/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mihnsen/ui-notifier.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mihnsen/ui-notifier/issues"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "main": "dist/ui-notifier.js",
+  "dependencies": {
+    "gulp-sourcemaps": "^1.6.0"
+  },
   "devDependencies": {
     "babel-preset-es2015": "^6.16.0",
     "gulp": "^3.8.7",
     "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^2.0.13",
     "gulp-concat": "^2.3.4",
     "gulp-jshint": "^1.8.4",
     "gulp-plumber": "^0.6.6",
@@ -21,8 +38,6 @@
     "karma-babel-preprocessor": "^6.0.1",
     "karma-jasmine": "^0.1.5",
     "karma-phantomjs-launcher": "^1.0.2",
-    "karma-sinon-chai": "^0.2.0",
-    "karma-spec-reporter": "^0.0.18",
     "run-sequence": "^1.0.2"
   },
   "engines": {

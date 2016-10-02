@@ -9,6 +9,8 @@ var runSequence = require('run-sequence');
 var jshint = require('gulp-jshint');
 var babel = require('gulp-babel');
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+var cleanCSS = require('gulp-clean-css');
 
 
 /**
@@ -58,7 +60,7 @@ gulp.task('build', function() {
  * Process
  */
 gulp.task('process-all', function (done) {
-  runSequence('scss', 'jshint', 'test-src', 'build', done);
+  runSequence('scss', 'jshint', 'test', 'build', done);
 });
 
 /**
@@ -71,7 +73,7 @@ gulp.task('watch', function () {
   gulp.watch(path.join(sourceDirectory, '/**/*.scss'), ['scss']);
 
   // watch test files and re-run unit tests when changed
-  gulp.watch(path.join(testDirectory, '/**/*.js'), ['test-src']);
+  gulp.watch(path.join(testDirectory, '/**/*.js'), ['test']);
 });
 
 /**
@@ -79,7 +81,12 @@ gulp.task('watch', function () {
  */
 gulp.task('scss', function() {
   return gulp.src(cssFiles)
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./dist'))
+    .pipe(cleanCSS())
+    .pipe(rename('ui-notifier.min.css'))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./dist'));
 });
 
@@ -97,7 +104,7 @@ gulp.task('jshint', function () {
 /**
  * Run test once and exit
  */
-gulp.task('test-src', function (done) {
+gulp.task('test', function (done) {
   karma.start({
     configFile: __dirname + '/karma-src.conf.js',
     singleRun: true
