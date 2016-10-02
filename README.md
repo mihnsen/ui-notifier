@@ -107,15 +107,15 @@ uiFlash.setOptions({
 Two using this serivce, we have to register a directive where message showed. You also configuration option via directive attributes.
 
 ```javascript
-    <div ui-flash-instance
-      position="top",
-      duration="5000",
-      limit="3",
-      single="false",
-      close-btn="true",
-      module="false"
-      html="false"
-      ></div>
+<div ui-flash-instance
+    position="top",
+    duration="5000",
+    limit="3",
+    single="false",
+    close-btn="true",
+    module="false"
+    html="false"
+></div>
 ```
 
 This will give the user the option of closing the notification themselves.  If you need to dismiss a notification manually, you can do so with the `dismiss` method like this:
@@ -276,3 +276,17 @@ Next, you'll want to do all of your development within three locations.  If you 
 
 Lastly, once you've made your changes and run through the appropriate gulp tasks, your changes should be baked and ready for you to consume - located in the `dist` directory as minified js and css files.
 
+
+## Authors
+**Minh Nguyen**
+
++ [https://twitter.com/mihnsen](https://twitter.com/mihnsen)
+
+## Credits
+Inspired by https://developer.android.com/guide/topics/ui/notifiers/notifications.html
+
+## Copyright
+Copyright © 2016
+
+## License
+toastr is under MIT license - http://www.opensource.org/licenses/mit-license.php
