@@ -1,12 +1,7 @@
 language: node_js
-
-node_js:
-  - '0.10'
-
-install:
+node_js: ["6.7.0"]
+before_script:
   - npm install -g bower
   - bower install
-
-before_script:
   - gulp build
 

@@ -132,27 +132,6 @@ angular.module('uiNotifier.directives').controller('FlashInstanceController', ['
 }]);
 'use strict';
 
-angular.module('uiNotifier.directives').directive('uiFlashInstance', ['uiFlash', '$timeout', function (uiFlash, $timeout) {
-  return {
-    restrict: 'EA',
-    template: '<div class="flash-instance flash-{{ ctrl.position }}" ng-class="{ \'flash-module\': ctrl.module }">\n          <div class="flash-track">\n            <div class="flash flash-{{ message.type }}" ng-repeat="message in ctrl.messages">\n              <button ng-hide="!ctrl.closeBtn" ng-click="ctrl.close(message.id)" class="flash-close">\n                <span> &times; </span>\n              </button>\n              <span class="msg" ng-if="!ctrl.htmlEnabled()">{{ message.msg }}</span>\n              <span class="msg" ng-if="ctrl.htmlEnabled()" ng-bind-html="message.msg"></span>\n            </div>\n          </div>\n        </div>',
-
-    scope: true,
-    bindToController: {
-      limit: '=?',
-      duration: '=?',
-      single: '=?',
-      closeBtn: '=?',
-      position: '=?',
-      module: '=?',
-      html: '=?'
-    },
-    controller: 'FlashInstanceController',
-    controllerAs: 'ctrl'
-  };
-}]);
-'use strict';
-
 angular.module('uiNotifier.providers').provider('uiFlash', [function () {
   var instance = null;
   var option = {
@@ -225,4 +204,25 @@ angular.module('uiNotifier.providers').provider('uiFlash', [function () {
       closeAll: closeAll
     };
   }];
+}]);
+'use strict';
+
+angular.module('uiNotifier.directives').directive('uiFlashInstance', ['uiFlash', '$timeout', function (uiFlash, $timeout) {
+  return {
+    restrict: 'EA',
+    template: '<div class="flash-instance flash-{{ ctrl.position }}" ng-class="{ \'flash-module\': ctrl.module }">\n          <div class="flash-track">\n            <div class="flash flash-{{ message.type }}" ng-repeat="message in ctrl.messages">\n              <button ng-hide="!ctrl.closeBtn" ng-click="ctrl.close(message.id)" class="flash-close">\n                <span> &times; </span>\n              </button>\n              <span class="msg" ng-if="!ctrl.htmlEnabled()">{{ message.msg }}</span>\n              <span class="msg" ng-if="ctrl.htmlEnabled()" ng-bind-html="message.msg"></span>\n            </div>\n          </div>\n        </div>',
+
+    scope: true,
+    bindToController: {
+      limit: '=?',
+      duration: '=?',
+      single: '=?',
+      closeBtn: '=?',
+      position: '=?',
+      module: '=?',
+      html: '=?'
+    },
+    controller: 'FlashInstanceController',
+    controllerAs: 'ctrl'
+  };
 }]);

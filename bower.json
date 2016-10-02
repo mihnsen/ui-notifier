@@ -13,13 +13,18 @@
     "dist/ui-notifier.css"
   ],
   "keywords": [
-    "AngularJS",
     "ui-notifier",
     "notify",
-    "flash",
     "notification",
+    "flash",
     "toast",
-    "angular-flash"
+    "message",
+    "alert",
+    "angular-notify",
+    "angular-notification",
+    "angular-flash",
+    "angular-toast",
+    "angular-alert"
   ],
   "ignore": [
     "src",
