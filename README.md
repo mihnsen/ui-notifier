@@ -17,6 +17,7 @@ With first version, we provide a Flash service to show flash message in your app
 - Setting limit messages
 - Show message on module
 - Html message supported
+
 [![uiNotifier Demo](images/screenshot.png)](http://mihnsen.github.io/ui-notifier)
 
 #### Comming soon
@@ -72,25 +73,7 @@ uiFlash.error('Your message goes here!');
 Advanced Usage
 ==============
 
-### Default Configuration
-
-You can override the default options for all notifications by using the `config` method.  None of these options are required. (For available options, check the [definitions](#definitions) below.)
-
-```javascript
-uiNotifier.config({
-    theme: 'pure',
-    position: 'bottom',
-    duration: 3000,
-    type: 'info',
-    sticky: false,
-    button: true,
-    html: false
-});
-```
-
-Default configuration options can be set during the `run()` block.  If your app utilizes a global controller, the config options could be set there just as well.
-
-### Provide Configurations
+### Global default configurations
 You can also pass an object of options to flash messages.  You can pass through any combination of our available options here as well. Here is setting in App.config (For available options, check the [definitions](#definitions) below.)  For example:
 
 ```javascript
@@ -150,9 +133,9 @@ In order for HTML notifications to display, you are required to include the [ngS
 
 If you don't have ngSanitize included and you do set `html` to true, uiNotifier will gracefully degrade back to the default message display and print a debug message to remind you in your browser's console.
 
-### Module flash
+### Module - flash message in specify container
 
-By specifying a `target` option, you are able to control where your notifications are displayed.  By default, the target is set to the body tag but you may provide any other CSS selector in order to control where the notification is appended.  For example:
+By config module, you are able to control where your notifications are displayed.  By default, the target is set to the body tag but you may provide any other CSS selector in order to control where the notification is appended.  For example:
 
 ```javascript
 uiFlash.setOptions({
@@ -160,7 +143,7 @@ uiFlash.setOptions({
 });
 ```
 
-** Notifications that have a custom target specified are set to display with absolute positioning, overriding the default fixed positioning.  It's impossible to tailor uiNotifier's style to fit every situation for every app, so you may have to tweak the styles to fit your specific needs when not appending notifications to the body tag - using anything other than the default target.
+** Notifications that have a custom target specified are set to display with absolute positioning, overriding the default fixed positioning.  It's impossible for uiNotifier's style to fit every situation for every app, so you may have to tweak the styles to fit your specific needs when not appending notifications to the body tag - using anything other than the default target.
 
 ### Notification id returned
 When we add a message an unique id returned, We can using this id to control the message.
@@ -177,7 +160,10 @@ $timeout(function() {
 The position, size, color, alignment and more are all styled based on the notification's classes and are all specified in the CSS file. See the [style definitions](#styles) below to see which classes can be used to override any of the styles within your own application.
 
 
-```Scss
+```
+
+Scss - default color scheme
+
 .flash.flash-success {
     background-color: #5eb95e
 }
@@ -190,6 +176,7 @@ The position, size, color, alignment and more are all styled based on the notifi
 .flash.flash-error {
     background-color: #dd514c
 }
+
 ```
 
 Definitions
@@ -235,7 +222,11 @@ sets default settings for all notifications to take into account when displaying
     - **module**: *string* - *optional* - append message to where you place the DIRECTIVE
 
 #### close(id)
-manually closes.
+manually close with id of message.
+
+#### closeAll()
+close all messages
+
 
 
 Development
@@ -268,6 +259,14 @@ To run through the configured unit tests, you can run `gulp test`.  This will fi
 gulp test
 ```
 
+To public gh-pages you can using command bellow. A folder with name _gh-pages contain all file in your gh-pages repo will be generated.
+Read here to config your gh-pages: 
+- https://help.github.com/articles/creating-project-pages-from-the-command-line/
+- https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/
+```console
+gulp gh-pages
+```
+
 Next, you'll want to do all of your development within three locations.  If you add changes anywhere else, they're likely to be overwritten during the build process.  These locations are:
 
 `src/scripts/ui-notifier.js` - for any script modifications.
@@ -291,4 +290,4 @@ Inspired by https://developer.android.com/guide/topics/ui/notifiers/notification
 Copyright © 2016
 
 ## License
-toastr is under MIT license - http://www.opensource.org/licenses/mit-license.php
+uiNotifier is under MIT license - http://www.opensource.org/licenses/mit-license.php
