@@ -1,16 +1,18 @@
-var gulp = require('gulp');
-var karma = require('karma').server;
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var path = require('path');
-var plumber = require('gulp-plumber');
-var runSequence = require('run-sequence');
-var jshint = require('gulp-jshint');
-var babel = require('gulp-babel');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var cleanCSS = require('gulp-clean-css');
+var gulp = require('gulp')
+  , karma = require('karma').server
+  , concat = require('gulp-concat')
+  , rename = require('gulp-rename')
+  , path = require('path')
+  , plumber = require('gulp-plumber')
+  , runSequence = require('run-sequence')
+  , jshint = require('gulp-jshint')
+  , babel = require('gulp-babel')
+  , sass = require('gulp-sass')
+  , sourcemaps = require('gulp-sourcemaps')
+  , usemin = require('gulp-usemin')
+  , uglify = require('gulp-uglify')
+  , minifyCss = require('gulp-minify-css')
+  , minifyHtml = require('gulp-minify-html');
 
 
 /**
@@ -84,7 +86,7 @@ gulp.task('scss', function() {
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./dist'))
-    .pipe(cleanCSS())
+    .pipe(minifyCss())
     .pipe(rename('ui-notifier.min.css'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./dist'));
@@ -129,6 +131,23 @@ gulp.task('test-dist-minified', function (done) {
     configFile: __dirname + '/karma-dist-minified.conf.js',
     singleRun: true
   }, done);
+});
+
+
+/**
+ * gh-pages pubish
+ */
+gulp.task('gh-pages', ['build'], function() {
+  gulp.src('./demo/index.html')
+    .pipe(usemin({
+      css: [ minifyCss(), 'concat' ],
+      html: [ minifyHtml({ empty: true }) ],
+      js: [ uglify() ],
+    }))
+    .pipe(gulp.dest('_gh-pages/'));
+
+  gulp.src('./demo/hero.png')
+    .pipe(gulp.dest('_gh-pages/'));
 });
 
 gulp.task('default', function () {

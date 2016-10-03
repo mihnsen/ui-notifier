@@ -16,3 +16,6 @@ libpeerconnection.log
 
 # Bower components
 bower
+
+# Github pages
+_gh-pages/

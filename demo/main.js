@@ -1,11 +1,12 @@
 var app = angular.module('App', ['uiNotifier', 'ngSanitize']);
-app.run(function(uiFlash) {
+
+app.run(['uiFlash', function(uiFlash) {
   uiFlash.setOptions({
     duration: 5000,
     limit: 5,
     position: 'bottom'
   });
-});
+}]);
 
 app.controller('UINotifierDemoCtrl', ['$scope', 'uiFlash', function($scope, uiFlash) {
   'use strict';

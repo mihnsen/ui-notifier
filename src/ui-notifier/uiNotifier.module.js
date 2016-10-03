@@ -18,19 +18,4 @@
     'uiNotifier.directives',
     'uiNotifier.providers'
   ]);
-
-  try {
-    /* istanbul ignore else  */
-    if (angular.module('ngSanitize')) {
-
-      // Note on the requires array from module() source code:
-      // Holds the list of modules which the injector will load before the current module is loaded.
-
-      // A sort of lazy load for our dependency on ngSanitize, only if the module exists.
-      angular.module('uiNotifier').requires.push('ngSanitize');
-    }
-
-  } catch (err) {
-    // Ignore error, we'll disable any sanitize related functionality...
-  }
 })(angular);

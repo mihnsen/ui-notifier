@@ -15,20 +15,6 @@
   angular.module('uiNotifier.controller', []);
   angular.module('uiNotifier.directives', []);
   angular.module('uiNotifier', ['uiNotifier.config', 'uiNotifier.directives', 'uiNotifier.providers']);
-
-  try {
-    /* istanbul ignore else  */
-    if (angular.module('ngSanitize')) {
-
-      // Note on the requires array from module() source code:
-      // Holds the list of modules which the injector will load before the current module is loaded.
-
-      // A sort of lazy load for our dependency on ngSanitize, only if the module exists.
-      angular.module('uiNotifier').requires.push('ngSanitize');
-    }
-  } catch (err) {
-    // Ignore error, we'll disable any sanitize related functionality...
-  }
 })(angular);
 'use strict';
 
@@ -132,7 +118,28 @@ angular.module('uiNotifier.directives').controller('FlashInstanceController', ['
 }]);
 'use strict';
 
-angular.module('uiNotifier.providers').provider('uiFlash', [function () {
+angular.module('uiNotifier.directives').directive('uiFlashInstance', ['uiFlash', '$timeout', function (uiFlash, $timeout) {
+  return {
+    restrict: 'EA',
+    template: '<div class="flash-instance flash-{{ ctrl.position }}" ng-class="{ \'flash-module\': ctrl.module }">\n          <div class="flash-track">\n            <div class="flash flash-{{ message.type }}" ng-repeat="message in ctrl.messages">\n              <button ng-hide="!ctrl.closeBtn" ng-click="ctrl.close(message.id)" class="flash-close">\n                <span> &times; </span>\n              </button>\n              <span class="msg" ng-if="!ctrl.htmlEnabled()">{{ message.msg }}</span>\n              <span class="msg" ng-if="ctrl.htmlEnabled()" ng-bind-html="message.msg"></span>\n            </div>\n          </div>\n        </div>',
+
+    scope: true,
+    bindToController: {
+      limit: '=?',
+      duration: '=?',
+      single: '=?',
+      closeBtn: '=?',
+      position: '=?',
+      module: '=?',
+      html: '=?'
+    },
+    controller: 'FlashInstanceController',
+    controllerAs: 'ctrl'
+  };
+}]);
+'use strict';
+
+angular.module('uiNotifier.providers').provider('uiFlash', function () {
   var instance = null;
   var option = {
     position: 'top',
@@ -204,25 +211,4 @@ angular.module('uiNotifier.providers').provider('uiFlash', [function () {
       closeAll: closeAll
     };
   }];
-}]);
-'use strict';
-
-angular.module('uiNotifier.directives').directive('uiFlashInstance', ['uiFlash', '$timeout', function (uiFlash, $timeout) {
-  return {
-    restrict: 'EA',
-    template: '<div class="flash-instance flash-{{ ctrl.position }}" ng-class="{ \'flash-module\': ctrl.module }">\n          <div class="flash-track">\n            <div class="flash flash-{{ message.type }}" ng-repeat="message in ctrl.messages">\n              <button ng-hide="!ctrl.closeBtn" ng-click="ctrl.close(message.id)" class="flash-close">\n                <span> &times; </span>\n              </button>\n              <span class="msg" ng-if="!ctrl.htmlEnabled()">{{ message.msg }}</span>\n              <span class="msg" ng-if="ctrl.htmlEnabled()" ng-bind-html="message.msg"></span>\n            </div>\n          </div>\n        </div>',
-
-    scope: true,
-    bindToController: {
-      limit: '=?',
-      duration: '=?',
-      single: '=?',
-      closeBtn: '=?',
-      position: '=?',
-      module: '=?',
-      html: '=?'
-    },
-    controller: 'FlashInstanceController',
-    controllerAs: 'ctrl'
-  };
-}]);
+});
