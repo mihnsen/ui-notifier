@@ -103,22 +103,6 @@ Two using this serivce, we have to register a directive where message showed. Yo
 ></div>
 ```
 
-This will give the user the option of closing the notification themselves.  If you need to dismiss a notification manually, you can do so with the `dismiss` method like this:
-
-```javascript
-uiNotifier.dismiss();
-```
-
-If you'd prefer to dismiss the notification programmatically and prevent the user from doing so, you can add an option to remove the button:
-
-```javascript
-uiNotifier.set('This is sticky without a button.', {
-    sticky: true,
-    button: false
-});
-```
-
-*Any time a notification is set to sticky, the duration attribute will be ignored since the notification will not be automatically fading out.*
 
 ### HTML Notifications
 
